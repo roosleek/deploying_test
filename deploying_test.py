@@ -1,5 +1,13 @@
 import requests
 from time import sleep
+import signal
+
+def cleanup():
+    url = f"https://kabiev.ru/send/Script stopped."
+    requests.get(url)
+
+signal.signal(signal.SIGTERM, signal_handler)  # Сигнал завершения процесса
+signal.signal(signal.SIGINT, signal_handler)   # Сигнал прерывания (Ctrl+C)
 
 def run():
     print("Script started.")
