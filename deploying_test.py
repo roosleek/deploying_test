@@ -1,6 +1,13 @@
 import requests
 from time import sleep
 import signal
+import sys
+
+def signal_handler(signum, frame):
+    print("Получен сигнал остановки. Выполняем завершающие действия...")
+    # Выполните необходимые завершающие действия здесь
+    cleanup()
+    sys.exit(0)  # Завершите скрипт корректно
 
 def cleanup():
     url = f"https://kabiev.ru/send/Script stopped."
